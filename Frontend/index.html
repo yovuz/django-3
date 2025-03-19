@@ -1,0 +1,122 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>To-Do List</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            margin: 0;
+            padding: 0;
+            background-color: #f4f4f9;
+        }
+
+        #todo-container, #task-container {
+            margin: 20px;
+        }
+
+        ul {
+            list-style-type: none;
+            padding: 0;
+        }
+
+        li {
+            background-color: #fff;
+            padding: 15px;
+            margin-bottom: 10px;
+            border-radius: 5px;
+            box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+
+        li.completed {
+            text-decoration: line-through;
+            color: gray;
+        }
+
+        button {
+            background-color: #007bff;
+            color: #fff;
+            border: none;
+            padding: 8px 12px;
+            cursor: pointer;
+            border-radius: 4px;
+        }
+
+        button:hover {
+            background-color: #0056b3;
+        }
+
+        .task-checkbox {
+            margin-right: 15px;
+        }
+
+        .task-input {
+            margin-top: 10px;
+        }
+
+        input[type="text"], input[type="textarea"] {
+            width: 100%;
+            padding: 10px;
+            margin: 5px 0;
+            border: 1px solid #ccc;
+            border-radius: 4px;
+        }
+    </style>
+</head>
+<body>
+
+<!-- Title Container -->
+<div id="todo-container">
+    <h2>To-Do Titles</h2>
+    <ul id="title-list">
+        <!-- Titles will be populated here -->
+    </ul>
+    <button onclick="showTitleForm()">Create New Title</button>
+
+    <!-- Title Form -->
+    <div id="title-form" style="display: none;">
+        <input type="text" id="title-name" placeholder="Enter title name">
+        <button onclick="submitTitleForm(event)">Submit Title</button>
+    </div>
+</div>
+
+<!-- Task Container (appears after selecting a title) -->
+<div id="task-container" style="display: none;">
+    <h2 id="task-title"></h2>
+    <ul id="task-list">
+        <!-- Tasks will be populated here -->
+    </ul>
+    <button onclick="goBack()">Back to Titles</button>
+
+    <!-- Task Form -->
+    <div id="task-form" style="display: none;">
+        <input type="text" id="task-name" placeholder="Enter task name">
+        <input type="textarea" id="task-description" placeholder="Enter task description">
+        <button onclick="submitTaskForm(event)">Submit Task</button>
+    </div>
+</div>
+<div id="update-title-form" style="display:none;">
+    <form onsubmit="updateTitleSubmit(event)">
+        <input type="text" id="update-title-name" required />
+        <button type="submit">Update Title</button>
+        <button type="button" onclick="cancelTitleUpdate()">Cancel</button>
+    </form>
+</div>
+
+<!-- Form for updating a task -->
+<div id="task-update-form" style="display:none;">
+    <form onsubmit="updateTaskSubmit(event)">
+        <input type="text" id="update-task-name" placeholder="Task Name" required />
+        <input type="text" id="update-task-description" placeholder="Task Description" required />
+        <button type="submit">Update Task</button>
+        <button type="button" onclick="cancelTaskUpdate()">Cancel</button>
+    </form>
+</div>
+
+<script src="app.js"></script>
+</body>
+</html>

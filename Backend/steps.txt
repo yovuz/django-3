@@ -1,0 +1,15 @@
+       step1
+create project Todolist
+create app todo
+create model Title(name charfield 255)
+set app to settings
+set postgres to settings
+create db name todo_db
+makemigrations
+migrate
+create superuser
+register Title model to admin
+Add one title from admin
+installing packages
+       pip install djangorestframework --index-url https://pypi.tuna.tsinghua.edu.cn/simple/
+       pip install django-cors-headers --index-url https://pypi.tuna.tsinghua.edu.cn/simple/
